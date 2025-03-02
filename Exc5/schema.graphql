@@ -1,0 +1,41 @@
+# schema.graphql
+
+schema {
+  query: Query
+}
+
+# Корневой запрос, предоставляющий доступ к основным ресурсам сервиса
+type Query {
+  # Получить основную информацию о клиенте по ID
+  client(id: ID!): Client
+
+  # Получить список документов клиента по ID
+  clientDocuments(id: ID!): [Document!]!
+
+  # Получить информацию о родственниках клиента по ID
+  clientRelatives(id: ID!): [Relative!]!
+}
+
+# Тип, описывающий клиента
+type Client {
+  id: ID!
+  name: String
+  age: Int
+}
+
+# Тип, описывающий документ клиента
+type Document {
+  id: ID!
+  type: String
+  number: String
+  issueDate: String
+  expiryDate: String
+}
+
+# Тип, описывающий родственника клиента
+type Relative {
+  id: ID!
+  relationType: String
+  name: String
+  age: Int
+}
